@@ -9,6 +9,7 @@ urls = (
   '/gen_ajax/', 'gen_ajax',
   '/create/', 'create',
   '/lookup/', 'lookup',
+  '/howto-disable-javascript', 'howto_disable_javascript',
 )
 
 render = web.template.render(config.SOURCE_TEMPLATES_DIR, base='base',
@@ -110,6 +111,13 @@ class lookup:
   def POST(self):
     i = web.input('id', fh={}, msg=None, mid=None, action=None)
     return store_endpoint(i)
+
+class howto_disable_javascript:
+  def GET(self):
+    web.header('Cache-Control', 'no-cache, no-store, must-revalidate')
+    web.header('Pragma', 'no-cache')
+    web.header('Expires', '-1')
+    return render.howto_disable_javascript()
 
 def notfound():
   web.header('Cache-Control', 'no-cache, no-store, must-revalidate')

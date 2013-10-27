@@ -7,6 +7,8 @@ $def with (doc)
     <link rel='stylesheet' href='/static/css/securedrop.css' type='text/css' media='all' />
     <link rel="icon" type="image/png" href="/static/i/favicon.png">
     <title>SecureDrop</title>
+    $if 'extra_head' in doc:
+      $:doc.extra_head
   </head>
   <body>
     <div id="wrapper">
