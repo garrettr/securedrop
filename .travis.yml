@@ -13,6 +13,7 @@ before_install:
 install:
 - pip install ansible
 script:
+- ansible all -m setup
 - echo localhost > inventory
 - ansible-playbook -i inventory --syntax-check install_files/ansible-base/securedrop-travis.yml
 - ansible-playbook -i inventory --connection=local --sudo --tags=development install_files/ansible-base/securedrop-travis.yml
