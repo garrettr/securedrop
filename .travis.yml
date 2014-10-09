@@ -13,8 +13,8 @@ before_install:
 install:
 - pip install ansible
 script:
-- ansible all -m setup
 - echo localhost > inventory
+- ansible all -i inventory -m setup
 - ansible-playbook -i inventory --syntax-check install_files/ansible-base/securedrop-travis.yml
 - ansible-playbook -i inventory --connection=local --sudo --tags=development install_files/ansible-base/securedrop-travis.yml
 - sudo sh -c "export DISPLAY=:1; cd securedrop && ./manage.py test"
