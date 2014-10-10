@@ -1,5 +1,5 @@
 ---
-- hosts: [ 'staging', 'debs' ]
+- hosts: [ 'localhost', 'staging', 'debs' ]
 
   vars_files:
     - securedrop-travis-staging-conf.yml
