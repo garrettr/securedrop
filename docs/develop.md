@@ -1,5 +1,19 @@
 # Setup your local environment
 
+## Version Notes
+
+Tested with:
+
+```
+vagrant --version
+Vagrant 1.6.5
+```
+
+```
+ansible --version
+ansible 1.7.2
+```
+
 ## Ubuntu 14.04
 
 `sudo apt-get install git -y`
@@ -59,31 +73,20 @@ Now you're ready to use vagrant to provision SecureDrop VM's!
 
 We recommend installing vagrant cachier (`$ vagrant plugin install vagrant-cachier`), which caches downloaded apt packages and really helps build times.
 
-## Version Notes
-
-This setup requires: ansible, vagrant, virtualbox.
-Was tested using:
-
-vagrant --version
-Vagrant 1.6.5
-
-ansible --version
-ansible 1.7.2
-
 # Overview
 
 There are 5 predefined VMs in the vagrantfile: development, debs, staging, app and mon
 
-* development VM: for working on the application code
+* **development**: for working on the application code
     * Source Interface: localhost:8080
     * Document Interface: localhost:8081
-* debs VM: Will build the FPF deb packages and store them in /vagrant so they can be used by other VMs/playbooks
-* staging: Requires the securedrop-app-code.deb to install the application
+* **debs**: Will build the FPF deb packages and store them in /vagrant so they can be used by other VMs/playbooks
+* **staging**: Requires the securedrop-app-code.deb to install the application
     * Source Interface: localhost:8082
     * Document Interface: localhost:8083
     * The interfaces and ssh are also available over tor.
     * A copy of the the Onion urls for source, document and ssh access are written to the vagrant host's ansible-base directory. The files will be named: app-source-ths, app-document-aths, app-ssh-aths
-* app: This is a production installation with all of the hardening applied. 
+* **app**: This is a production installation with all of the hardening applied. 
     * The interfaces and ssh are only available over tor.
     * A copy of the the Onion urls for source, document and ssh access are written to the vagrant host's ansible-base directory. The files will be named: app-source-ths, app-document-aths, app-ssh-aths
 
