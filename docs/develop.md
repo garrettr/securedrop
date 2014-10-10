@@ -75,7 +75,7 @@ We recommend installing vagrant cachier (`$ vagrant plugin install vagrant-cachi
 
 # Overview
 
-There are 5 predefined VMs in the vagrantfile: development, debs, staging, app and mon
+There are 4 predefined VM configurations in the vagrantfile: development, debs, staging, app and mon
 
 * **development**: for working on the application code
     * Source Interface: localhost:8080
