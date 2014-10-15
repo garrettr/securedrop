@@ -32,6 +32,7 @@ def get_pid_from_pidfile(pid_file_name):
 def _start_test_rqworker():
     # needed to determine the directory to run the worker in
     import config
+    print dir(config)
 
     worker_running = False
     try:
