@@ -23,7 +23,7 @@
     dest: "{{ securedrop_code }}/config.py"
     owner: "{{ securedrop_user }}"
     group: "{{ securedrop_user }}"
-    mode: 600
+    mode: 666
 
 # TODO: config.py.example is already written using Jinja2 format, and should be
 # easy to template-ize. However, we cannot do this because when Ansible writes
