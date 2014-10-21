@@ -4,7 +4,8 @@ This is the full set of instructions for a complete run-through of installing Se
 
 
 # Requirements
-
+* 1 pfsense Network Firewall
+* **TODO**: merge info about netgate vs physical with 3 nics
 * 3 Intel NUCs
   1. Application Server
   2. Monitor Server
@@ -44,6 +45,9 @@ This machine has USB 3.0, which is nice for booting live USB quickly and for tra
 
 I am using these for the Application and Monitor servers (app and mon). They only have USB 2.0, which is not so bad because the Linux installation using live USB is a one-time process and you rarely transfer files directly from the servers. They also only have one available display connector: HDMI.
 
+# Network Firewall setup
+**TODO** merge info about purchasing netgate pre-installed with pfsense or links to pfsense doc for installing pfsense on PC with 3 nics
+**TODO** merge info about example network firewall rules.
 
 # Tails setup
 
