@@ -660,3 +660,7 @@ p#max-file-size {
   font-style:italic;
   margin-bottom: 0;
 }
+
+div.padding {
+  display:none;
+}

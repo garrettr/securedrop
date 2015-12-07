@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% set padding = random_padding(1) %}
+
 {% block body %}
 
 <h1>Disable JavaScript to Protect Your Anonymity</h1>
@@ -11,4 +14,7 @@
 
 <p><strong>To disable JavaScript in Tor Browser, click the NoScript icon <img src="/static/i/no16.png"/> to the left of the address bar above and choose "Forbid Scripts Globally (advised)".</strong></p>
 
+<div class="padding">
+  {{ padding[0] }}
+</div>
 {% endblock %}

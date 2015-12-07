@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% set padding = random_padding(1) %}
+
 {% block body %}
 <div id="content">
 
@@ -7,5 +10,9 @@
 <p>Sorry, the website encountered an error and was unable to complete your request.</p>
 
 <p><a href="/login">Look up a codename...</a></p>
+</div>
+
+<div class="padding">
+  {{ padding[0] }}
 </div>
 {% endblock %}

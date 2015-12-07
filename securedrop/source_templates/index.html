@@ -1,3 +1,5 @@
+{% set padding = random_padding(1) %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -64,5 +66,8 @@
       <p><a href="/howto-disable-js">Not using the Tor Browser Bundle?</a></p>
     </div>
 
+    <div class="padding">
+      {{ padding[0] }}
+    </div>
   </body>
 </html>

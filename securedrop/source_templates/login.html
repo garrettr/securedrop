@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% set padding = random_padding(2) %}
+
 {% block body %}
 
 <h2>Login to check for responses</h2>
@@ -6,8 +9,13 @@
 {% include 'flashed.html' %}
 
 <form method="post" action="/login" autocomplete="off">
+<input name="padding" type="hidden" value="{{ padding[0] }}">
 <input name="csrf_token" type="hidden" value="{{ csrf_token() }}">
 <p class="center"><input type="text" name="codename" class="codename" autocomplete="off" placeholder="Enter your codename" autofocus /></p>
 <p class="center"><button type="submit" class="btn block"><i class="fa fa-arrow-circle-o-right"></i> Continue</button></p>
 </form>
+
+<div class="padding">
+  {{ padding[1] }}
+</div>
 {% endblock %}

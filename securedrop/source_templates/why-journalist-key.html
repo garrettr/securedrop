@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% set padding = random_padding(1) %}
+
 {% block body %}
 <h2>Why download the journalist's public key?</h2>
 <p>SecureDrop encrypts files and messages after they are submitted. Encrypting messages and files before submission can provide an extra layer of security before your data reaches the SecureDrop server.</p>
@@ -23,4 +26,8 @@
 <p><strong>Tip:</strong> If you wish to remain anonymous, <strong>do not</strong> use GPG to sign the encrypted file (with the <code>--sign</code> or <code>-s</code> flag) as this will reveal your GPG identity to us.</p>
 
 <p><a href="/lookup">&laquo; Back to submission page</a></p>
+
+<div class="padding">
+  {{ padding[0] }}
+</div>
 {% endblock %}

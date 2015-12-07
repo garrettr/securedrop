@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% set padding = random_padding(3) %}
+
 {% block body %}
 
 <div class="center">
@@ -15,6 +18,7 @@
 </div>
 
 <form id="upload" method="post" action="/submit" enctype="multipart/form-data" autocomplete="off">
+  <input name="padding" type="hidden" value="{{ padding[0] }}">
   <input name="csrf_token" type="hidden" value="{{ csrf_token() }}"/>
   <div class="snippet">
     <div class="attachment grid-item">
@@ -45,6 +49,7 @@
       <div class="reply">
         <time class="date" title="{{ reply.date|datetimeformat }}" datetime="{{ reply.date }}">{{ reply.date|datetimeformat(relative=True) }}</time>
         <form class="message" method="post" action="/delete" autocomplete="off">
+          <input name="padding" type="hidden" value="{{ padding[1] }}">
           <input name="csrf_token" type="hidden" value="{{ csrf_token() }}"/>
           <input type="hidden" name="reply_filename" value="{{ reply.filename }}" autocomplete="off"/>
           <button type="submit"><i class="fa fa-trash-o"></i> Delete</button>
@@ -64,4 +69,7 @@
   <i class="fa fa-lock pull-left"></i> Remember, your codename is: <strong>{{ codename }}</strong>
 </div>
 
+<div class="padding">
+  {{ padding[2] }}
+</div>
 {% endblock %}

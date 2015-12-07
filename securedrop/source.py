@@ -48,6 +48,12 @@ else:
 
 app.jinja_env.filters['datetimeformat'] = template_filters.datetimeformat
 app.jinja_env.filters['nl2br'] = evalcontextfilter(template_filters.nl2br)
+app.jinja_env.filters['random_padding'] = template_filters.random_padding
+
+
+@app.context_processor
+def random_padding():
+    return dict(random_padding=template_filters.random_padding)
 
 
 @app.teardown_appcontext
