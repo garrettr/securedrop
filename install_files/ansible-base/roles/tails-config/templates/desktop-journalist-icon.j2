@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Categories=Network;
+Name[es_ES]=Interfaz del periodista de SecureDrop
+Name[fr]=SecureDrop - Interface des journalistes
+Name[nb_NO]=Journalistgrensesnitt for SecureDrop
+Name=SecureDrop Journalist Interface
+Icon={{ tails_config_securedrop_dotfiles }}/securedrop_icon.png
+Exec=/usr/local/bin/tor-browser {{ item.0.onion_url }}

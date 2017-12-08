@@ -1,5 +1,144 @@
 # Changelog
 
+## 0.5-rc5
+
+### Web Applications
+
+* Internationalize both web applications (#2470, #2392, #2400, #2374, #2626,
+  #2354, #2338, #2333, #2229, #2223).
+* Localize in Arabic, Dutch, French, German, Norwegian, Portuguese and Spanish.
+* Add language picker to web applications (#2557).
+* Refactor both web applications using Flask Blueprints (#2294).
+* Add default 120 minute session timeout on both interfaces (#880, #2503).
+* Only show source codename on first session (#2327).
+* Invert `login_required` decorator on journalist interface so that logins
+  are required by default (#2460).
+* Require entry of old password before changing password (#2304).
+* Use whitespace control on Jinja templates (#2413).
+* Add reset icon to reset password button (#2423).
+* Improve form validation on new user creation in journalist interface (#2500).
+* Improve form validation on login form on source interface (#2376).
+* Resolve confusing use of first/third person on user creation (#2323).
+* Show which journalist is logged in on the journalist interface (#2293).
+* Create friendly session expiry page (#2290).
+* Improve UX to get to individual source page on journalist interface (#2130).
+* Improve UX on login forms by making fields longer (#2288).
+* Bugfix: Fix input validation on Yubikey for 2FA HOTP (#2311).
+* Bugfix: Remove extra level in folders in submission downloads (#2262).
+
+### Operations
+
+* Allow apache/apparmor file exception for proving onion ownership to a CA (#2602)
+* Enable admins to set supported locales via SecureDrop admin script (#2516)
+* Update AppArmor rules for Apache (#2507).
+* Reduce number of pip requirements files (#2175).
+
+### Monitoring
+
+* Add `/boot` to integrity checking (#2496).
+* Bugfix: Remove OSSEC syscheck monitoring of temporary files produced by bulk
+  download (#2606).
+
+### Tails Environment
+
+* Bugfix: Use host for SASL and SMTP domain validation (#2591).
+* Bugfix: Add trusted metadata to SecureDrop .desktop files (#2586).
+
+### Developer Workflow
+
+* Add updated Data Flow Diagrams (#2370).
+* Add safety check for Python dependencies in CI (#2451).
+* Remove noisy GnuPG debug output on test failure (#2595).
+* Convert tests in SubmissionNotInMemoryTest to pytest (#2548).
+* Document virtualized Admin Workstation setup (#2204, #2607).
+* Bugfix: Remove extra `rqworker` start in unit tests (#2613).
+* Bugfix: Resolve test failures in VirtualBox (#2396).
+
+### Documentation
+
+* Add sample SecureDrop privacy policy to documentation (#2340).
+* Break out "Deployment Best Practices" into discrete docs section (#2339).
+
+The issues for this release were tracked in the 0.5 milestone on Github:
+https://github.com/freedomofpress/securedrop/milestones/0.5.
+
+## 0.4.4
+
+Bugfix release. Fixes configuration management logic to ensure all packages
+are properly validated prior to installation.
+
+* Remove force=yes in package install tasks in Ansible config.
+* Upgrade Ansible to 2.3.2 to address CVE-2017-7481.
+* Add securedrop-admin `logs` command for collecting log files.
+* Increases expiration date on SecureDrop Release Signing Key to October 2018.
+
+Since this is a bugfix release, the changes on the 0.4.4 milestone
+are not included here. Those issues have been postponed to a future release.
+
+## 0.4.3
+
+The issues for this release were tracked in the 0.4.3 milestone on Github:
+https://github.com/freedomofpress/securedrop/milestones/0.4.3.
+
+### Web Applications
+
+* Automatically generate diceware passphrases for SecureDrop journalists and administrators (#980).
+* Add minimum length check for journalist usernames (#1682).
+* Resolve inconsistently named source IDs (#1998).
+* Fix transient test errors (#2122, #2214, #2205).
+* Progress towards internationalizing SecureDrop: Add utilities for extracting strings for translation and for compiling translations (#2120), add DEFAULT_LOCATE to config.py (#2197).
+* Make source interface index responsive (#2235).
+* Remove safe filter from jinja templates (#2227).
+
+### Operations
+
+* Retry SMTP relay and SASL domain verification tasks in validate role (#2099).
+* Disable Postfix in the staging environment (#1164).
+* Refactor Debian package build logic (#2160).
+* Reboot staging servers on first provision (#1704).
+* Bugfix: Whitelist fontawesome-webfont.svg in AppArmor (#2075).
+
+### Tails Environment
+
+* Bugfix: Use .xsessionrc in SVS to prevent unpacking of office files (#2188).
+
+### Monitoring
+
+* Remove OSSEC alert for Tor Guard overloaded log event (#1670).
+* Remove OSSEC alert when journalists bulk delete submissions (#1691).
+* Remove OSSEC alert for OSSEC keepalive event (#2138).
+* Add "Ansible playbook run on server" OSSEC rule (#2224).
+* Update locations of logs on app server for OSSEC syscheck (#2153).
+* Adds regression testing for OSSEC false positives (#2137).
+
+### Developer Workflow
+
+* Adds flake8 linting (#886).
+* Add code style guide for contributors (#47).
+* Produce screenshots before and after Selenium tests for debugging (#2086).
+* Add HTML linting (#2081).
+* Add Makefile targets for linters (#1920).
+* Adds "page layout" automated tests that take screenshots of the source and journalist interface in each language (#2141).
+* Expose documentation on port 8000 on development machine (#2170).
+* Make Makefile self-documenting (#2169).
+* Add pre-commit hook for developers (#2234).
+* CI: Do not run staging CI if only documentation has changed (#2132).
+* CI: Use new Trusty image for Travis CI (#1876).
+
+### Documentation
+
+* Adds guide and glossary for translators (#2039, #2162).
+* Adds i18n guide for developers (#2118).
+* Adds note in Tails upgrade documentation about missing "Root Terminal" launcher in workstation backup procedure (#2065).
+* Update AppArmor developer documentation (#2077).
+* Adds pre-installation checklist (#2139).
+* Specify NTP server to use in install documentation (#2094).
+* Adds new tested printer for use in SecureDrop airgap (#2117).
+* Add documentation for multiple administrators managing config (#2096).
+* Update KeePassX (#2158).
+* Add documentation for using gksu nautilus in lieu of "Root Terminal" in Tails 3 backup process (#2069).
+* Update hardware requirements (#2207).
+
 ## 0.4.2
 
 * Explicitly enables DAC override capability in Apache AppArmor profile (#2105)
@@ -246,7 +385,7 @@ This is a high-level overview of some of the more significant changes between Se
 * Do not set headers in the web app (handle by production config.)
 * Add 2fac auth for journalist interface
 * Allow OSSEC emails to be encrypted with admin GPG key
-* Install app server, monitor server, Python dependencies, and custom configuration via deb packages
+* Install app server, monitor server, Python dependencies, and custom configuration via Debian packages
 * UI refresh on source and journalist interfaces
 * New UX for journalists:
   * "quick filter" box for codenames
@@ -256,8 +395,8 @@ This is a high-level overview of some of the more significant changes between Se
   * more detailed source listings
 * Normalize submission timestamps to that of the most recent submission
 to minimize metadata that could be used for correlation
-* Handle journalist authentication in the Document Interface instead of relying entirely on Authenticated Tor Hidden Services.
-* Document Interface supports two-factor authentication via Google Authenticator or Yubikey
+* Handle journalist authentication in the Document Interface instead of relying entirely on Authenticated Tor hidden services.
+* Document Interface supports two-factor authentication via Google Authenticator or YubiKey
   * These logins are hardened in a manner similar to that of the `google-authenticator` PAM module: tokens may only be used once, logins are rate limited, etc.
   * If you are using TOTP, the window is expanded from 1 period to 3 in order to help the situation where the server and client's clocks are skewed
 * Add Admin Interface so privileged "admin" users may add, edit, or delete other users on the Document Interface

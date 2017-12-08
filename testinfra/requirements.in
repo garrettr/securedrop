@@ -1,6 +1,0 @@
-ansible<2.3
-docker-py
-boto
-pip-tools
-pytest-xdist
-testinfra

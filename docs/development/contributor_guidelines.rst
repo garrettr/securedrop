@@ -1,6 +1,12 @@
 Contributing Guidelines
 =======================
 
+Signing commits
+---------------
+
+Commits should be signed, as `explained in the GitHub documentation <https://help.github.com/articles/signing-commits-using-gpg/>`_.
+This helps verify commits proposed in a pull request are from the expected author.
+
 Branching Strategy
 ------------------
 
@@ -52,8 +58,6 @@ root of the repository:
 
      pip install -r securedrop/requirements/develop-requirements.txt
 
-
-
 Python
 ~~~~~~
 
@@ -63,6 +67,19 @@ compliant. You can run ``flake8`` locally via:
   .. code:: sh
 
       make flake8
+
+Shell
+~~~~~
+
+All Shell code (e.g. ``bash``, ``sh``) should be `shellcheck <https://github.com/koalaman/shellcheck>`__
+compliant. You can run ``shellcheck`` locally via:
+
+  .. code:: sh
+
+      make shellcheck
+
+For reference, consult the `shellcheck wiki <https://github.com/koalaman/shellcheck/wiki>`__
+for detailed explanations of any reported violations.
 
 HTML
 ~~~~
@@ -76,6 +93,19 @@ our HTML templates in ``securedrop/source_templates`` and
   .. code:: sh
 
       make html-lint
+
+YAML
+~~~~
+
+The Ansible configuration is specified in YAML files, including variables,
+tasks, and playbooks. All YAML files in the project should pass the
+`yamllint <https://github.com/adrienverge/yamllint>`__ standards declared
+in the ``.yamllint`` file at the root of the repository.
+Run the checks locally via:
+
+  .. code:: sh
+
+      make yamllint
 
 Git History
 -----------

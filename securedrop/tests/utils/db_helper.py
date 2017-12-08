@@ -91,11 +91,10 @@ def mark_downloaded(*submissions):
 
 # db.{Source,Submission}
 
-def init_source():
-    """Initialize a source: create their database record, the
-    filesystem directory that stores their submissions & replies,
-    and their GPG key encrypted with their codename. Return a source
-    object and their codename string.
+def init_source_without_keypair():
+    """Initialize a source: create their database record and the
+    filesystem directory that stores their submissions & replies.
+    Return a source object and their codename string.
 
     :returns: A 2-tuple. The first entry, the :class:`db.Source`
     initialized. The second, their codename string.
@@ -109,7 +108,20 @@ def init_source():
     db.db_session.commit()
     # Create the directory to store their submissions and replies
     os.mkdir(store.path(source.filesystem_id))
-    # Generate their key, blocking for as long as necessary
+
+    return source, codename
+
+
+def init_source():
+    """Initialize a source: create their database record, the
+    filesystem directory that stores their submissions & replies,
+    and their GPG key encrypted with their codename. Return a source
+    object and their codename string.
+
+    :returns: A 2-tuple. The first entry, the :class:`db.Source`
+    initialized. The second, their codename string.
+    """
+    source, codename = init_source_without_keypair()
     crypto_util.genkeypair(source.filesystem_id, codename)
 
     return source, codename
@@ -144,15 +156,13 @@ def submit(source, num_submissions):
     return submissions
 
 
-# NOTE: this method is potentially dangerous to rely on for now due
-# to the fact flask_testing.TestCase only uses on request context
-# per method (see
-# https://github.com/freedomofpress/securedrop/issues/1444).
 def new_codename(client, session):
     """Helper function to go through the "generate codename" flow.
     """
-    with client as c:
-        c.get('/generate')
-        codename = session['codename']
-        c.post('/create')
+    # clear the session because our tests have implicit reliance on each other
+    session.clear()
+
+    client.get('/generate')
+    codename = session['codename']
+    client.post('/create')
     return codename

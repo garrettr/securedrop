@@ -44,6 +44,17 @@ anonymous sources.
    onboarding
 
 .. toctree::
+   :caption: Deployment Best Practices
+   :name: deploymenttoc
+   :maxdepth: 2
+
+   deployment_practices
+   deployment/landing_page.rst
+   deployment/minimum_security_requirements.rst
+   deployment/whole_site_changes.rst
+   deployment/sample_privacy_policy.rst
+
+.. toctree::
    :caption: Checklists
    :name: checklists
    :maxdepth: 2
@@ -55,7 +66,6 @@ anonymous sources.
    :name: topictoc
    :maxdepth: 2
 
-   deployment_practices
    getting_the_most_out_of_securedrop
    what_makes_securedrop_unique
    google_authenticator
@@ -74,6 +84,7 @@ anonymous sources.
    :name: upgradetoc
    :maxdepth: 2
 
+   upgrade/0.4.x_to_0.5.rst
    upgrade/0.3.x_to_0.4.rst
    upgrade_to_tails_2x.rst
    upgrade_to_tails_3x
@@ -93,7 +104,9 @@ anonymous sources.
    :maxdepth: 2
 
    development/getting_started
+   development/setup_development
    development/virtual_environments
+   development/virtualizing_tails
    development/contributor_guidelines
    development/tips_and_tricks
    development/i18n
@@ -104,5 +117,13 @@ anonymous sources.
    development/testing_configuration_tests
    development/testing_continuous_integration
    development/apt_repo
+   development/updating_ossec
    development/apparmor_profiles
-   development/threat_model
+
+.. toctree::
+  :caption: Threat Model
+  :name: threatdoc
+  :maxdepth: 2
+
+  threat_model/threat_model.rst
+  threat_model/dataflow.rst
